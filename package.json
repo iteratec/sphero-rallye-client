@@ -1,0 +1,25 @@
+{
+  "name": "sphero-rallye-client",
+  "version": "0.0.1",
+  "description": "Javascript client to play the rallye with one Sphero.",
+  "dependencies": {
+    "live-server": "^1.2.0"
+  },
+  "scripts": {
+    "start": "./node_modules/live-server/live-server.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iteratec/sphero-rallye-client.git"
+  },
+  "keywords": [
+    "sphero"
+  ],
+  "author": "",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/iteratec/sphero-rallye-client/issues"
+  },
+  "homepage": "https://github.com/iteratec/sphero-rallye-client#readme"
+}

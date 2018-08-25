@@ -1,0 +1,168 @@
+/* Color Palette:
+   https://coolors.co/333333-266dd3-29335c-4cb944-388659
+*/
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    --white: #ffffff;
+    --blue: #266dd3;
+    --light-blue: #ddebff;
+    --dark-blue: #29335C;
+    --green: #4CB944;
+    --dark-green: #388659;
+    --dark: #333333;
+}
+
+.ueberschrift {
+    font-size: 36px;
+    color: var(--blue);
+    margin: 50px 0;
+}
+
+.kopfzeile {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    background-color: var(--blue);
+}
+
+.kopfzeile p {
+    display: inline-block;
+    margin: 0 70px;
+    color: var(--white);
+    font-size: 24px;
+}
+
+.spielbereich {
+    display: flex;
+}
+
+.teilbereich {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px);
+    width: 50vw;
+}
+
+/* Linke Seite */
+
+.links {
+    background-color: var(--light-blue);
+}
+
+.links .ueberschrift {
+    text-align: center;
+}
+
+ul.verfuegbare-aktionen {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    list-style: none;
+    margin: 0 70px 50px 70px;
+    padding: 0;
+}
+
+.verfuegbare-aktion {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    width: 30%;
+    margin: 0;
+    border: 1px var(--blue) dashed;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--dark);
+}
+
+.verfuegbare-aktion i {
+    flex: 1 1 auto;
+    font-size: 48px;
+}
+
+.verfuegbare-aktion div {
+    flex: 1 1 auto;
+    font-size: 24px;
+}
+
+/* Rechte Seite */
+
+.rundenstart-anzeige {
+    text-align: center;
+}
+
+.stoppuhr {
+    margin: -50px 0 50px 0;
+    font-size: 144px;
+}
+
+.geplante-aktionen {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px;
+}
+
+.aktion {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: 1px var(--dark) solid;
+    border-radius: 10px 50px 50px 10px;
+}
+
+.aktion i {
+    margin: 0 25px;
+    font-size: 36px;
+}
+
+/* Styling of select dropdowns is a tricky task. This helped:
+   - https://coderwall.com/p/w7npmq/fully-custom-select-box-simple-css-only
+   - https://codepen.io/gnclmorais/pen/cHkqt/
+*/
+.aktions-auswahl {
+    padding: 0;
+    margin: 0;
+}
+
+.aktions-auswahl select {
+    font-size: 18px;
+    border: none;
+    background: transparent none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+/* End of styling the select dropdown */
+
+.rundenplanung-abschicken {
+    margin: 50px 70px;
+}
+
+button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px var(--dark-green) solid;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#abschicken {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+#zuruecksetzen {
+    background-color: var(--white);
+    color: var(--dark);
+}
