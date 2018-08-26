@@ -135,10 +135,12 @@ function geplanteAktionenAbschicken() {
       return;
     }
 
-    const aktionsWert = aktion.querySelector(`.${aktionsTyp}`).value;
+    const selector = (aktionsTyp === "SET_COLOR") ? `.aktions-wert.${aktionsTyp} input` : `.aktions-wert.${aktionsTyp}`;
+    const aktionsWert = aktion.querySelector(selector).value;
+
     geplanteAktionen.push({
       "actionType": aktionsTyp,
-      "value": aktionsWert
+      "config": aktionsWert
     });
 
   });
