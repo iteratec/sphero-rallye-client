@@ -1,4 +1,6 @@
 const MQTT_URL = "ws://localhost:8080";
+let client = null;
+let spieler = null;
 
 const ICONS = {
   "MOVE": "fa-forward",
@@ -30,11 +32,15 @@ function styleCustomColorPicker() {
 }
 
 function eventsRegistrieren() {
-  document.querySelectorAll(".aktions-auswahl").forEach(function(element) {
+  document.querySelectorAll(".aktions-auswahl").forEach(function (element) {
     element.addEventListener("change", aktionSetzen)
   });
 
-  document.querySelector("#alle-aktionen-zuruecksetzen").addEventListener("click", alleAktionenZuruecksetzen);
+  document.querySelector("#alle-aktionen-zuruecksetzen")
+    .addEventListener("click", alleAktionenZuruecksetzen);
+
+  document.querySelector("#abschicken")
+    .addEventListener("click", geplanteAktionenAbschicken)
 }
 
 function spielerAuswaehlenUndSpielBeitreten() {
@@ -43,20 +49,19 @@ function spielerAuswaehlenUndSpielBeitreten() {
 }
 
 function spielBeitreten() {
-  console.log("spielBeitreten");
-  const client  = mqtt.connect(MQTT_URL);
+  client  = mqtt.connect(MQTT_URL);
+  spieler = document.querySelector("#spieler").value;
+
   client.on('connect', function () {
-    const spieler = document.querySelector("#spieler").value;
-    client.subscribe(`spheroRallye/${spieler.toString()}/possibleActionTypes`, function (err) {
-      if (err) {
-        console.log(err);
+    client.subscribe(`spheroRallye/${spieler.toString()}/possibleActionTypes`, function (error) {
+      if (error) {
+        console.log(error);
       }
     })
   });
 
   client.on('message', function (topic, message) {
     message = JSON.parse(message);
-    console.log(message);
     verfuegbareAktionstypenAnzeigen(message);
   });
 }
@@ -102,21 +107,56 @@ function aktionSetzen() {
 function aktionZuruecksetzen(aktion) {
   const icon = aktion.querySelector("i");
 
-  Object.keys(ICONS).forEach(function(key) {
+  Object.keys(ICONS).forEach(function (key) {
     aktion.classList.remove(key);
     icon.classList.remove(ICONS[key]);
   });
   icon.classList.add("fa-puzzle-piece");
-  aktion.querySelectorAll(".aktions-wert").forEach(function(element) {
+  aktion.querySelectorAll(".aktions-wert").forEach(function (element) {
     element.style.display = "none";
   });
   aktion.querySelector(".aktions-einheit").innerHTML = "";
 }
 
 function alleAktionenZuruecksetzen() {
-  document.querySelectorAll(".aktion").forEach(function(aktion) {
+  document.querySelectorAll(".aktion").forEach(function (aktion) {
     aktionZuruecksetzen(aktion);
     aktion.querySelector(".aktions-auswahl").value = "";
+  });
+}
+
+function geplanteAktionenAbschicken() {
+  let geplanteAktionen = [];
+
+  document.querySelectorAll(".aktion").forEach(function (aktion) {
+    const aktionsTyp = aktion.querySelector(".aktions-auswahl").value;
+
+    if (!aktionsTyp) {
+      return;
+    }
+
+    const aktionsWert = aktion.querySelector(`.${aktionsTyp}`).value;
+    geplanteAktionen.push({
+      "actionType": aktionsTyp,
+      "value": aktionsWert
+    });
+
+  });
+
+  if (client === null) {
+    alert("Es muss ein Spieler ausgewählt sein.");
+    return;
+  }
+
+  if (geplanteAktionen.length < 5) {
+    alert("Es müssen alle 5 Aktionen ausgefüllt sein.");
+    return;
+  }
+
+  client.publish(`spheroRallye/${spieler.toString()}/plannedActions`, JSON.stringify(geplanteAktionen), function(error) {
+    if (error) {
+      console.log(error);
+    }
   });
 }
 
