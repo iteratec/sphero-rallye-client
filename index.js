@@ -1,21 +1,28 @@
-MQTT_URL = "ws://localhost:8080";
+const MQTT_URL = "ws://localhost:8080";
 
-ICONS = {
+const ICONS = {
   "MOVE": "fa-forward",
   "TURN_AROUND": "fa-sync-alt",
   "SET_COLOR": "fa-lightbulb"
 };
 
-AKTIONSTYP_BESCHREIBUNGEN = {
+const AKTIONSTYP_BESCHREIBUNGEN = {
   "MOVE": "Fahren",
   "TURN_AROUND": "Drehen",
   "SET_COLOR": "Farbe ändern"
 };
 
+function spielerAuswaehlen() {
+  const spielerAuswahl = document.querySelector("#spieler");
+  spielerAuswahl.addEventListener("change", verbinden);
+}
+
 function verbinden() {
+  console.log("verbinden");
   const client  = mqtt.connect(MQTT_URL);
   client.on('connect', function () {
-    client.subscribe('spheroRallye/player1/possibleActionTypes', function (err) {
+    const spieler = document.querySelector("#spieler").value;
+    client.subscribe(`spheroRallye/${spieler.toString()}/possibleActionTypes`, function (err) {
       if (err) {
         console.log(err);
       }
@@ -49,4 +56,4 @@ function verfuegbareAktionstypenAnzeigen(aktionstypen) {
   });
 }
 
-verbinden();
+spielerAuswaehlen();
