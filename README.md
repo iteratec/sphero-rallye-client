@@ -1,6 +1,7 @@
 # sphero-rallye-client
 Javascript client to play the rallye with one Sphero. The corresponding game server can be found [here](https://github.com/iteratec/sphero-rallye-server).
 
+![screenshot](screenshot.png)
 
 ## Usage
 
