@@ -3,9 +3,9 @@ let client = null;
 let spieler = null;
 
 const ICONS = {
-  "MOVE": "fa-forward",
+  "MOVE": "fa-angle-double-right",
   "TURN_AROUND": "fa-sync-alt",
-  "SET_COLOR": "fa-lightbulb"
+  "SET_COLOR": "fa-paint-brush"
 };
 
 const AKTIONSTYP_BESCHREIBUNGEN = {
