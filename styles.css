@@ -81,11 +81,13 @@ ul.verfuegbare-aktionen {
 .verfuegbare-aktion i {
     flex: 1 1 auto;
     font-size: 48px;
+    margin: 50px 0 25px 0;
 }
 
 .verfuegbare-aktion div {
     flex: 1 1 auto;
     font-size: 24px;
+    margin: 25px 0;
 }
 
 /* Rechte Seite */
