@@ -33,6 +33,8 @@ function eventsRegistrieren() {
   document.querySelectorAll(".aktions-auswahl").forEach(function(element) {
     element.addEventListener("change", aktionSetzen)
   });
+
+  document.querySelector("#alle-aktionen-zuruecksetzen").addEventListener("click", alleAktionenZuruecksetzen);
 }
 
 function spielerAuswaehlenUndSpielBeitreten() {
@@ -82,12 +84,11 @@ function verfuegbareAktionstypenAnzeigen(aktionstypen) {
 function aktionSetzen() {
   const aktionstyp = this.value;
   const aktion = this.parentElement;
-  const icon = this.previousElementSibling;
+  const icon = aktion.querySelector("i");
 
-  aktionZuruecksetzen(aktion, icon);
+  aktionZuruecksetzen(aktion);
 
   if (aktionstyp === "") {
-    icon.classList.add("fa-puzzle-piece");
     return;
   }
 
@@ -98,15 +99,25 @@ function aktionSetzen() {
   aktion.querySelector(".aktions-einheit").innerHTML = AKTIONS_EINHEITEN[aktionstyp];
 }
 
-function aktionZuruecksetzen(aktion, icon) {
+function aktionZuruecksetzen(aktion) {
+  const icon = aktion.querySelector("i");
+
   Object.keys(ICONS).forEach(function(key) {
     aktion.classList.remove(key);
     icon.classList.remove(ICONS[key]);
   });
+  icon.classList.add("fa-puzzle-piece");
   aktion.querySelectorAll(".aktions-wert").forEach(function(element) {
     element.style.display = "none";
   });
   aktion.querySelector(".aktions-einheit").innerHTML = "";
+}
+
+function alleAktionenZuruecksetzen() {
+  document.querySelectorAll(".aktion").forEach(function(aktion) {
+    aktionZuruecksetzen(aktion);
+    aktion.querySelector(".aktions-auswahl").value = "";
+  });
 }
 
 styleCustomColorPicker();
