@@ -1,5 +1,6 @@
-/* Color Palette:
+/* Color Palettes:
    https://coolors.co/333333-266dd3-29335c-4cb944-388659
+   https://coolors.co/4cb944-266dd3-f9af84-84bcda-b6b8b7
 */
 
 body {
@@ -12,6 +13,12 @@ body {
     --green: #4CB944;
     --dark-green: #388659;
     --dark: #333333;
+    --move-color: #84BCDA;
+    --move-color-darker: #74A5BF;
+    --rotate-color: #F9AF84;
+    --rotate-color-darker: #E09E77;
+    --set-color-color: #B6B8B7;
+    --set-color-color-darker: #9C9E9D;
 }
 
 h1 {
@@ -123,6 +130,21 @@ ul.verfuegbare-aktionen {
     border-radius: 10px 50px 50px 10px;
 }
 
+.aktion.MOVE {
+    background-color: var(--move-color);
+    border-color: var(--move-color-darker);
+}
+
+.aktion.TURN_AROUND {
+    background-color: var(--rotate-color);
+    border-color: var(--rotate-color-darker);
+}
+
+.aktion.SET_COLOR {
+    background-color: var(--set-color-color);
+    border-color: var(--set-color-color-darker);
+}
+
 .aktion i {
     margin: 0 25px;
     font-size: 36px;
@@ -149,6 +171,49 @@ ul.verfuegbare-aktionen {
     outline: none;
 }
 /* End of styling the select dropdown */
+
+.aktion-spacer {
+    flex: 1 1 auto;
+}
+
+.aktions-wert {
+    height: 50px;
+    width: 100px;
+    border: 1px solid;
+    border-radius: 50px;
+    background-color: transparent;
+    font-size: 36px;
+    text-align: right;
+    margin-right: 50px;
+}
+
+input[type="color"] {
+    opacity: 0;
+}
+
+.aktions-wert.MOVE {
+    display: none;
+    border-color: transparent;
+    background-color: var(--move-color-darker);
+}
+
+.aktions-wert.TURN_AROUND {
+    display: none;
+    border-color: transparent;
+    background-color: var(--rotate-color-darker);
+}
+
+.aktions-wert.SET_COLOR {
+    display: none;
+    border-color: var(--set-color-color-darker);
+}
+
+.aktions-einheit {
+    color: var(--dark);
+    font-size: 18px;
+    min-width: 150px;
+    margin-right: 50px;
+}
 
 .rundenplanung-abschicken {
     margin: 50px 70px;

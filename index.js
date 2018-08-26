@@ -12,13 +12,36 @@ const AKTIONSTYP_BESCHREIBUNGEN = {
   "SET_COLOR": "Farbe ändern"
 };
 
-function spielerAuswaehlen() {
-  const spielerAuswahl = document.querySelector("#spieler");
-  spielerAuswahl.addEventListener("change", verbinden);
+const AKTIONS_EINHEITEN = {
+  "MOVE": "Geschwindigkeit",
+  "TURN_AROUND": "Grad",
+  "SET_COLOR": ""
+};
+
+function styleCustomColorPicker() {
+  const colorPickers = document.querySelectorAll("input[type='color']");
+  colorPickers.forEach(function (colorPicker) {
+    const colorPickerWrapper = colorPicker.parentElement;
+    colorPicker.onchange = function () {
+      colorPickerWrapper.style.backgroundColor = colorPicker.value;
+    };
+    colorPickerWrapper.style.backgroundColor = colorPicker.value;
+  });
 }
 
-function verbinden() {
-  console.log("verbinden");
+function eventsRegistrieren() {
+  document.querySelectorAll(".aktions-auswahl > select").forEach(function(element) {
+    element.addEventListener("change", aktionSetzen)
+  });
+}
+
+function spielerAuswaehlenUndSpielBeitreten() {
+  const spielerAuswahl = document.querySelector("#spieler");
+  spielerAuswahl.addEventListener("change", spielBeitreten);
+}
+
+function spielBeitreten() {
+  console.log("spielBeitreten");
   const client  = mqtt.connect(MQTT_URL);
   client.on('connect', function () {
     const spieler = document.querySelector("#spieler").value;
@@ -56,4 +79,36 @@ function verfuegbareAktionstypenAnzeigen(aktionstypen) {
   });
 }
 
-spielerAuswaehlen();
+function aktionSetzen() {
+  const aktionstyp = this.value;
+  const aktion = this.parentElement.parentElement;
+  const icon = this.parentElement.previousElementSibling;
+
+  aktionZuruecksetzen(aktion, icon);
+
+  if (aktionstyp === "") {
+    icon.classList.add("fa-puzzle-piece");
+    return;
+  }
+
+  aktion.classList.add(aktionstyp);
+  icon.classList.remove("fa-puzzle-piece");
+  icon.classList.add(ICONS[aktionstyp]);
+  aktion.querySelector(`.aktions-wert.${aktionstyp}`).style.display = "block";
+  aktion.querySelector(".aktions-einheit").innerHTML = AKTIONS_EINHEITEN[aktionstyp];
+}
+
+function aktionZuruecksetzen(aktion, icon) {
+  Object.keys(ICONS).forEach(function(key) {
+    aktion.classList.remove(key);
+    icon.classList.remove(ICONS[key]);
+  });
+  aktion.querySelectorAll(".aktions-wert").forEach(function(element) {
+    element.style.display = "none";
+  });
+  aktion.querySelector(".aktions-einheit").innerHTML = "";
+}
+
+styleCustomColorPicker();
+eventsRegistrieren();
+spielerAuswaehlenUndSpielBeitreten();
