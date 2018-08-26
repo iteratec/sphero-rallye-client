@@ -30,7 +30,7 @@ function styleCustomColorPicker() {
 }
 
 function eventsRegistrieren() {
-  document.querySelectorAll(".aktions-auswahl > select").forEach(function(element) {
+  document.querySelectorAll(".aktions-auswahl").forEach(function(element) {
     element.addEventListener("change", aktionSetzen)
   });
 }
@@ -81,8 +81,8 @@ function verfuegbareAktionstypenAnzeigen(aktionstypen) {
 
 function aktionSetzen() {
   const aktionstyp = this.value;
-  const aktion = this.parentElement.parentElement;
-  const icon = this.parentElement.previousElementSibling;
+  const aktion = this.parentElement;
+  const icon = this.previousElementSibling;
 
   aktionZuruecksetzen(aktion, icon);
 

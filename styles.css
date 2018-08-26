@@ -157,9 +157,6 @@ ul.verfuegbare-aktionen {
 .aktions-auswahl {
     padding: 0;
     margin: 0;
-}
-
-.aktions-auswahl select {
     font-size: 18px;
     border: none;
     background: transparent none;
@@ -167,7 +164,7 @@ ul.verfuegbare-aktionen {
     -moz-appearance: none;
 }
 
-.select-style select:focus {
+.aktions-auswahl:focus {
     outline: none;
 }
 /* End of styling the select dropdown */
@@ -189,6 +186,9 @@ ul.verfuegbare-aktionen {
 
 input[type="color"] {
     opacity: 0;
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
 }
 
 .aktions-wert.MOVE {
