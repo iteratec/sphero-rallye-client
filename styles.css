@@ -14,7 +14,7 @@ body {
     --dark: #333333;
 }
 
-.ueberschrift {
+h1 {
     font-size: 36px;
     color: var(--blue);
     margin: 50px 0;
@@ -51,7 +51,7 @@ body {
     background-color: var(--light-blue);
 }
 
-.links .ueberschrift {
+.links h1 {
     text-align: center;
 }
 
@@ -97,6 +97,7 @@ ul.verfuegbare-aktionen {
 .stoppuhr {
     margin: -50px 0 50px 0;
     font-size: 144px;
+    font-weight: normal;
 }
 
 .geplante-aktionen {
