@@ -4,7 +4,7 @@ function verfuegbareAktionstypenAnzeigen(aktionstypen) {
 
   JSON.parse(aktionstypen).forEach(function (aktionstyp) {
     let li = document.createElement("li");
-    li.classList.add("verfuegbare-aktion");
+    li.classList.add(`verfuegbare-aktion ${aktionstyp}`);
 
     let icon = document.createElement("i");
     icon.classList.add("fas", ICONS[aktionstyp.toString()]);

@@ -164,7 +164,8 @@
 <script src="scripts/index.js"></script>
 <script>
   document.querySelectorAll(".aktions-auswahl").forEach(function (element) {
-    element.addEventListener("change", aktionSetzen)
+    element.addEventListener("change", aktionSetzen);
+    element.addEventListener("change", validateActionTypeSelection);
   });
 
   document.querySelector("#spieler")
