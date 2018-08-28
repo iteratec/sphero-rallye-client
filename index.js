@@ -52,18 +52,48 @@ function spielBeitreten() {
   client  = mqtt.connect(MQTT_URL);
   spieler = document.querySelector("#spieler").value;
 
-  client.on('connect', function () {
+  client.on("connect", function () {
     client.subscribe(`spheroRallye/${spieler.toString()}/possibleActionTypes`, function (error) {
+      if (error) {
+        console.log(error);
+      }
+    });
+
+    client.subscribe("spheroRallye/roundEnd", function (error) {
       if (error) {
         console.log(error);
       }
     })
   });
 
-  client.on('message', function (topic, message) {
-    message = JSON.parse(message);
-    verfuegbareAktionstypenAnzeigen(message);
+  client.on("message", function (topic, message) {
+    if (topic === "spheroRallye/roundEnd") {
+      stoppuhrStarten(message);
+    } else if (topic === `spheroRallye/${spieler.toString()}/possibleActionTypes`) {
+      message = JSON.parse(message);
+      verfuegbareAktionstypenAnzeigen(message);
+    } else {
+      console.error("This topic is not handled:");
+      console.log(topic);
+      console.log(message);
+    }
   });
+}
+
+function stoppuhrStarten(rundenende) {
+  const x = setInterval(function () {
+    const verbleibendeSekunden = Math.round((Date.parse(rundenende.toString()) - Date.now()) / 1000);
+    stoppuhrAnzeigen(verbleibendeSekunden);
+
+    if (verbleibendeSekunden < 0) {
+      clearInterval(x);
+    }
+  }, 1000);
+}
+
+function stoppuhrAnzeigen(sekunden) {
+  const stoppuhr = document.querySelector("#stoppuhr-wert")
+  stoppuhr.innerHTML = sekunden;
 }
 
 function verfuegbareAktionstypenAnzeigen(aktionstypen) {
