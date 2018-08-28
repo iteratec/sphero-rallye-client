@@ -210,10 +210,6 @@ input[type="color"] {
     background-color: var(--rotate-color-darker);
 }
 
-/*.aktions-wert.SET_RGB {*/
-    /*border-color: var(--set-rgb-color-darker);*/
-/*}*/
-
 .aktions-einheit {
     color: var(--dark);
     font-size: 18px;
