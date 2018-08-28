@@ -167,7 +167,28 @@
 
 </div>
 
-<script src="mqtt.min.js"></script>
-<script src="index.js"></script>
+<script src="lib/mqtt.min.js"></script>
+<script src="lib/globals.js"></script>
+<script src="lib/lib.js"></script>
+<script src="scripts/stoppuhr.js"></script>
+<script src="scripts/verfuegbareAktionstypen.js"></script>
+<script src="scripts/geplanteAktionen.js"></script>
+<script src="scripts/index.js"></script>
+<script>
+  document.querySelectorAll(".aktions-auswahl").forEach(function (element) {
+    element.addEventListener("change", aktionSetzen)
+  });
+
+  document.querySelector("#spieler")
+    .addEventListener("change", spielBeitreten);
+
+  document.querySelector("#alle-aktionen-zuruecksetzen")
+    .addEventListener("click", alleAktionenZuruecksetzen);
+
+  document.querySelector("#abschicken")
+    .addEventListener("click", geplanteAktionenAbschicken);
+
+  styleCustomColorPicker();
+</script>
 </body>
 </html>
