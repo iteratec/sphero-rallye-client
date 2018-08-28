@@ -3,21 +3,21 @@ let client = null;
 let spieler = null;
 
 const ICONS = {
-  "MOVE": "fa-angle-double-right",
-  "TURN_AROUND": "fa-sync-alt",
-  "SET_COLOR": "fa-paint-brush"
+  "ROLL": "fa-angle-double-right",
+  "ROTATE": "fa-sync-alt",
+  "SET_RGB": "fa-paint-brush"
 };
 
 const AKTIONSTYP_BESCHREIBUNGEN = {
-  "MOVE": "Fahren",
-  "TURN_AROUND": "Drehen",
-  "SET_COLOR": "Farbe ändern"
+  "ROLL": "Fahren",
+  "ROTATE": "Drehen",
+  "SET_RGB": "Farbe ändern"
 };
 
 const AKTIONS_EINHEITEN = {
-  "MOVE": "Geschwindigkeit",
-  "TURN_AROUND": "Grad",
-  "SET_COLOR": ""
+  "ROLL": "Geschwindigkeit",
+  "ROTATE": "Grad",
+  "SET_RGB": ""
 };
 
 function styleCustomColorPicker() {
@@ -135,16 +135,16 @@ function geplanteAktionenAbschicken() {
       return;
     }
 
-    const selector = (aktionsTyp === "SET_COLOR") ? `.aktions-wert.${aktionsTyp} input` : `.aktions-wert.${aktionsTyp}`;
+    const selector = (aktionsTyp === "SET_RGB") ? `.aktions-wert.${aktionsTyp} input` : `.aktions-wert.${aktionsTyp}`;
     const aktionsWert = aktion.querySelector(selector).value;
 
     let parameter = {};
 
-    if (aktionsTyp === "MOVE") {
+    if (aktionsTyp === "ROLL") {
       parameter["speed"] = aktionsWert;
-    } else if (aktionsTyp === "TURN_AROUND") {
+    } else if (aktionsTyp === "ROTATE") {
       parameter["heading"] = aktionsWert;
-    } else if (aktionsTyp === "SET_COLOR") {
+    } else if (aktionsTyp === "SET_RGB") {
       parameter["color"] = aktionsWert;
     }
 

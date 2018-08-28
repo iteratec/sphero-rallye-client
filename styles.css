@@ -13,12 +13,12 @@ body {
     --green: #4CB944;
     --dark-green: #388659;
     --dark: #333333;
-    --move-color: #84BCDA;
-    --move-color-darker: #74A5BF;
+    --roll-color: #84BCDA;
+    --roll-color-darker: #74A5BF;
     --rotate-color: #F9AF84;
     --rotate-color-darker: #E09E77;
-    --set-color-color: #B6B8B7;
-    --set-color-color-darker: #9C9E9D;
+    --set-rgb-color: #B6B8B7;
+    --set-rgb-color-darker: #9C9E9D;
 }
 
 h1 {
@@ -141,19 +141,19 @@ ul.verfuegbare-aktionen {
     border-radius: 10px 50px 50px 10px;
 }
 
-.aktion.MOVE {
-    background-color: var(--move-color);
-    border-color: var(--move-color-darker);
+.aktion.ROLL {
+    background-color: var(--roll-color);
+    border-color: var(--roll-color-darker);
 }
 
-.aktion.TURN_AROUND {
+.aktion.ROTATE {
     background-color: var(--rotate-color);
     border-color: var(--rotate-color-darker);
 }
 
-.aktion.SET_COLOR {
-    background-color: var(--set-color-color);
-    border-color: var(--set-color-color-darker);
+.aktion.SET_RGB {
+    background-color: var(--set-rgb-color);
+    border-color: var(--set-rgb-color-darker);
 }
 
 .aktion i {
@@ -202,21 +202,21 @@ input[type="color"] {
     border-radius: 50px;
 }
 
-.aktions-wert.MOVE {
+.aktions-wert.ROLL {
     display: none;
     border-color: transparent;
-    background-color: var(--move-color-darker);
+    background-color: var(--roll-color-darker);
 }
 
-.aktions-wert.TURN_AROUND {
+.aktions-wert.ROTATE {
     display: none;
     border-color: transparent;
     background-color: var(--rotate-color-darker);
 }
 
-.aktions-wert.SET_COLOR {
+.aktions-wert.SET_RGB {
     display: none;
-    border-color: var(--set-color-color-darker);
+    border-color: var(--set-rgb-color-darker);
 }
 
 .aktions-einheit {
