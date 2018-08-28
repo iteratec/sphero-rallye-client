@@ -138,6 +138,7 @@ ul.verfuegbare-aktionen {
     align-items: center;
     border: 1px var(--dark) solid;
     border-radius: 10px 50px 50px 10px;
+    min-height: 95px;
 }
 
 .aktion.ROLL {
@@ -182,14 +183,10 @@ ul.verfuegbare-aktionen {
 }
 /* End of styling the select dropdown */
 
-.aktion-spacer {
-    flex: 1 1 auto;
-}
-
-.aktions-wert {
+.aktions-wert.SET_RGB, .aktions-wert input {
     height: 50px;
     width: 100px;
-    border: 1px solid;
+    border: 1px transparent solid;
     border-radius: 50px;
     background-color: transparent;
     font-size: 36px;
@@ -199,27 +196,23 @@ ul.verfuegbare-aktionen {
 
 input[type="color"] {
     opacity: 0;
-    width: 100px;
-    height: 50px;
-    border-radius: 50px;
 }
 
-.aktions-wert.ROLL {
+.aktions-wert.ROLL, .aktions-wert.ROTATE, .aktions-wert.SET_RGB {
     display: none;
-    border-color: transparent;
+}
+
+.aktions-wert.ROLL input {
     background-color: var(--roll-color-darker);
 }
 
-.aktions-wert.ROTATE {
-    display: none;
-    border-color: transparent;
+.aktions-wert.ROTATE input {
     background-color: var(--rotate-color-darker);
 }
 
-.aktions-wert.SET_RGB {
-    display: none;
-    border-color: var(--set-rgb-color-darker);
-}
+/*.aktions-wert.SET_RGB {*/
+    /*border-color: var(--set-rgb-color-darker);*/
+/*}*/
 
 .aktions-einheit {
     color: var(--dark);

@@ -47,8 +47,7 @@ function geplanteAktionenAbschicken() {
       return;
     }
 
-    const selector = (aktionsTyp === "SET_RGB") ? `.aktions-wert.${aktionsTyp} input` : `.aktions-wert.${aktionsTyp}`;
-    const aktionsWert = aktion.querySelector(selector).value;
+    const aktionsWert = aktion.querySelector(`.aktions-wert.${aktionsTyp} > input`).value;
 
     let parameter = {};
 
