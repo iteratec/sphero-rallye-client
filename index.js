@@ -138,9 +138,19 @@ function geplanteAktionenAbschicken() {
     const selector = (aktionsTyp === "SET_COLOR") ? `.aktions-wert.${aktionsTyp} input` : `.aktions-wert.${aktionsTyp}`;
     const aktionsWert = aktion.querySelector(selector).value;
 
+    let parameter = {};
+
+    if (aktionsTyp === "MOVE") {
+      parameter["speed"] = aktionsWert;
+    } else if (aktionsTyp === "TURN_AROUND") {
+      parameter["heading"] = aktionsWert;
+    } else if (aktionsTyp === "SET_COLOR") {
+      parameter["color"] = aktionsWert;
+    }
+
     geplanteAktionen.push({
-      "actionType": aktionsTyp,
-      "config": aktionsWert
+      "ActionType": aktionsTyp,
+      "Config": parameter
     });
 
   });
