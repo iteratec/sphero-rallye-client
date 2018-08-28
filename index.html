@@ -29,42 +29,10 @@
     <div class="teilbereich links">
         <h1>Verfügbare Aktionstypen in dieser Runde</h1>
         <ul class="verfuegbare-aktionen">
-              <li class="verfuegbare-aktion ROLL">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion ROLL">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion ROTATE">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion ROLL">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion ROTATE">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion SET_RGB">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion ROLL">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion SET_RGB">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
-              <li class="verfuegbare-aktion ROLL">
-                <i class="fas fa-puzzle-piece"></i>
-                <div>Aktionstyp</div>
-              </li>
+              <!--  <li class="verfuegbare-aktion <AKTIONS_TYP>">  -->
+              <!--    <i class="fas fa-puzzle-piece"></i>          -->
+              <!--    <div>Aktionstyp</div>                        -->
+              <!--  </li>                                          -->
         </ul>
     </div>
 
@@ -76,7 +44,7 @@
 
 
         <div class="geplante-aktionen">
-            <div class="aktion">
+            <div class="aktion" id="eins">
                 <i class="fas fa-puzzle-piece"></i>
                 <select class="aktions-auswahl">
                     <option value="">Wähle einen Aktionstyp</option>
@@ -95,7 +63,7 @@
                 </div>
                 <p class="aktions-einheit"></p>
             </div>
-            <div class="aktion">
+            <div class="aktion" id="zwei">
                 <i class="fas fa-puzzle-piece"></i>
                 <select class="aktions-auswahl">
                     <option value="">Wähle einen Aktionstyp</option>
@@ -114,7 +82,7 @@
                 </div>
                 <p class="aktions-einheit"></p>
             </div>
-            <div class="aktion">
+            <div class="aktion" id="drei">
                 <i class="fas fa-puzzle-piece"></i>
                 <select class="aktions-auswahl">
                     <option value="">Wähle einen Aktionstyp</option>
@@ -133,7 +101,7 @@
                 </div>
                 <p class="aktions-einheit"></p>
             </div>
-            <div class="aktion">
+            <div class="aktion" id="vier">
                 <i class="fas fa-puzzle-piece"></i>
                 <select class="aktions-auswahl">
                     <option value="">Wähle einen Aktionstyp</option>
@@ -152,7 +120,7 @@
                 </div>
                 <p class="aktions-einheit"></p>
             </div>
-            <div class="aktion">
+            <div class="aktion" id="fuenf">
                 <i class="fas fa-puzzle-piece"></i>
                 <select class="aktions-auswahl">
                     <option value="">Wähle einen Aktionstyp</option>
@@ -198,6 +166,7 @@
   document.querySelectorAll(".aktions-auswahl").forEach(function (element) {
     element.addEventListener("change", aktionSetzen);
     element.addEventListener("change", validateActionTypeSelection);
+    element.addEventListener("change", modifyAvailableActionTypes);
   });
 
   document.querySelector("#spieler")

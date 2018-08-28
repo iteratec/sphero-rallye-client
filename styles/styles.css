@@ -106,14 +106,29 @@ ul.verfuegbare-aktionen {
     background-color: var(--roll-color);
 }
 
+.verfuegbare-aktion.ROLL.ausgewaehlt {
+    border: 1px var(--roll-color-darker) dashed;
+    background-color: transparent;
+}
+
 .verfuegbare-aktion.ROTATE {
     border: none;
     background-color: var(--rotate-color);
 }
 
+.verfuegbare-aktion.ROTATE.ausgewaehlt {
+    border: 1px var(--rotate-color-darker) dashed;
+    background-color: transparent;
+}
+
 .verfuegbare-aktion.SET_RGB {
     border: none;
     background-color: var(--set-rgb-color);
+}
+
+.verfuegbare-aktion.SET_RGB.ausgewaehlt {
+    border: 1px var(--set-rgb-color-darker) dashed;
+    background-color: transparent;
 }
 
 .verfuegbare-aktion i {
