@@ -1,4 +1,4 @@
-function aktionSetzen() {
+function aktionUebernehmen() {
   const aktionstyp = this.value;
   const aktion = this.parentElement;
   const icon = aktion.querySelector("i");
@@ -12,8 +12,55 @@ function aktionSetzen() {
   aktion.classList.add(aktionstyp);
   icon.classList.remove("fa-puzzle-piece");
   icon.classList.add(ICONS[aktionstyp]);
-  aktion.querySelector(`.aktions-wert.${aktionstyp}`).style.display = "block";
-  aktion.querySelector(".aktions-einheit").innerHTML = AKTIONS_EINHEITEN[aktionstyp];
+
+  const aktionsWert = aktion.querySelector(".aktions-wert");
+
+  if (aktionstyp === "ROLL") {
+    const geschwindigkeit = document.createElement("input");
+    geschwindigkeit.type = "number";
+    geschwindigkeit.value = "0";
+
+    const geschwindigkeitBeschreibung = document.createElement("p");
+    geschwindigkeitBeschreibung.classList.add("aktions-einheit");
+    geschwindigkeitBeschreibung.innerHTML = "Geschwindigkeit";
+
+    const dauer = document.createElement("input");
+    dauer.type = "number";
+    dauer.value = "0";
+
+    const dauerBeschreibung = document.createElement("p");
+    dauerBeschreibung.classList.add("aktions-einheit");
+    dauerBeschreibung.innerHTML = "Dauer";
+
+    aktionsWert.appendChild(geschwindigkeit);
+    aktionsWert.appendChild(geschwindigkeitBeschreibung);
+    aktionsWert.appendChild(dauer);
+    aktionsWert.appendChild(dauerBeschreibung);
+    aktion.classList.add("ROLL");
+  } else if (aktionstyp === "ROTATE") {
+    const grad = document.createElement("input");
+    grad.type = "number";
+    grad.value = "0";
+
+    const gradBeschreibung = document.createElement("p");
+    gradBeschreibung.classList.add("aktions-einheit");
+    gradBeschreibung.innerHTML = "Grad";
+
+    aktionsWert.appendChild(grad);
+    aktionsWert.appendChild(gradBeschreibung);
+    aktion.classList.add("ROTATE");
+  } else if (aktionstyp === "SET_RGB") {
+    const farbe = document.createElement("input");
+    farbe.type = "color";
+    farbe.value = "#4CB944";
+
+    const farbeBeschreibung = document.createElement("p");
+    farbeBeschreibung.classList.add("aktions-einheit");
+
+    aktionsWert.appendChild(farbe);
+    aktionsWert.appendChild(farbeBeschreibung);
+    aktion.classList.add("SET_RGB");
+  }
 }
 
 function aktionZuruecksetzen(aktion) {
@@ -24,10 +71,8 @@ function aktionZuruecksetzen(aktion) {
     icon.classList.remove(ICONS[key]);
   });
   icon.classList.add("fa-puzzle-piece");
-  aktion.querySelectorAll(".aktions-wert").forEach(function (element) {
-    element.style.display = "none";
-  });
-  aktion.querySelector(".aktions-einheit").innerHTML = "";
+
+  aktion.querySelector(".aktions-wert").innerHTML = "";
 }
 
 function alleAktionenZuruecksetzen() {

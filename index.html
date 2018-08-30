@@ -29,10 +29,22 @@
     <div class="teilbereich links">
         <h1>Verfügbare Aktionstypen in dieser Runde</h1>
         <ul class="verfuegbare-aktionen">
-              <!--  <li class="verfuegbare-aktion <AKTIONS_TYP>">  -->
-              <!--    <i class="fas fa-puzzle-piece"></i>          -->
-              <!--    <div>Aktionstyp</div>                        -->
-              <!--  </li>                                          -->
+            <!--  <li class="verfuegbare-aktion <AKTIONS_TYP>">  -->
+            <!--    <i class="fas fa-puzzle-piece"></i>          -->
+            <!--    <div>Aktionstyp</div>                        -->
+            <!--  </li>                                          -->
+            <li class="verfuegbare-aktion ROLL">
+                <i class="fas fa-puzzle-piece"></i>
+                <div>Aktionstyp</div>
+            </li>
+            <li class="verfuegbare-aktion ROTATE">
+                <i class="fas fa-puzzle-piece"></i>
+                <div>Aktionstyp</div>
+            </li>
+            <li class="verfuegbare-aktion SET_RGB">
+                <i class="fas fa-puzzle-piece"></i>
+                <div>Aktionstyp</div>
+            </li>
         </ul>
     </div>
 
@@ -52,16 +64,17 @@
                     <option value="ROTATE">Drehen</option>
                     <option value="SET_RGB">Farbe ändern</option>
                 </select>
-                <div class="aktions-wert ROLL">
-                    <input type="number" value="0">
+                <div class="aktions-wert">
+                    <!--  <input type="number">                           -->
+                    <!--  <p class="aktions-einheit">Geschwindigkeit</p>  -->
+                    <!--  <input type="number">                           -->
+                    <!--  <p class="aktions-einheit">Dauer</p>            -->
+                    <!-- -->
+                    <!--  <input type="number">                           -->
+                    <!--  <p class="aktions-einheit">Grad</p>             -->
+                    <!-- -->
+                    <!--  <input type="color">                            -->
                 </div>
-                <div class="aktions-wert ROTATE">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert SET_RGB">
-                    <input type="color" value="#4CB944">
-                </div>
-                <p class="aktions-einheit"></p>
             </div>
             <div class="aktion" id="zwei">
                 <i class="fas fa-puzzle-piece"></i>
@@ -71,16 +84,7 @@
                     <option value="ROTATE">Drehen</option>
                     <option value="SET_RGB">Farbe ändern</option>
                 </select>
-                <div class="aktions-wert ROLL">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert ROTATE">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert SET_RGB">
-                    <input type="color" value="#4CB944">
-                </div>
-                <p class="aktions-einheit"></p>
+                <div class="aktions-wert"></div>
             </div>
             <div class="aktion" id="drei">
                 <i class="fas fa-puzzle-piece"></i>
@@ -90,16 +94,7 @@
                     <option value="ROTATE">Drehen</option>
                     <option value="SET_RGB">Farbe ändern</option>
                 </select>
-                <div class="aktions-wert ROLL">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert ROTATE">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert SET_RGB">
-                    <input type="color" value="#4CB944">
-                </div>
-                <p class="aktions-einheit"></p>
+                <div class="aktions-wert"></div>
             </div>
             <div class="aktion" id="vier">
                 <i class="fas fa-puzzle-piece"></i>
@@ -109,16 +104,7 @@
                     <option value="ROTATE">Drehen</option>
                     <option value="SET_RGB">Farbe ändern</option>
                 </select>
-                <div class="aktions-wert ROLL">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert ROTATE">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert SET_RGB">
-                    <input type="color" value="#4CB944">
-                </div>
-                <p class="aktions-einheit"></p>
+                <div class="aktions-wert"></div>
             </div>
             <div class="aktion" id="fuenf">
                 <i class="fas fa-puzzle-piece"></i>
@@ -128,16 +114,7 @@
                     <option value="ROTATE">Drehen</option>
                     <option value="SET_RGB">Farbe ändern</option>
                 </select>
-                <div class="aktions-wert ROLL">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert ROTATE">
-                    <input type="number" value="0">
-                </div>
-                <div class="aktions-wert SET_RGB">
-                    <input type="color" value="#4CB944">
-                </div>
-                <p class="aktions-einheit"></p>
+                <div class="aktions-wert"></div>
             </div>
         </div>
 
@@ -164,7 +141,7 @@
 <script src="scripts/index.js"></script>
 <script>
   document.querySelectorAll(".aktions-auswahl").forEach(function (element) {
-    element.addEventListener("change", aktionSetzen);
+    element.addEventListener("change", aktionUebernehmen);
     element.addEventListener("change", validateActionTypeSelection);
     element.addEventListener("change", modifyAvailableActionTypes);
   });

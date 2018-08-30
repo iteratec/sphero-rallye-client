@@ -213,6 +213,14 @@ ul.verfuegbare-aktionen {
 }
 /* End of styling the select dropdown */
 
+.aktions-wert {
+    display: flex;
+}
+
+.aktions-wert * {
+    margin-right: 10px;
+}
+
 .aktions-wert.SET_RGB, .aktions-wert input {
     height: 50px;
     width: 100px;
@@ -221,16 +229,15 @@ ul.verfuegbare-aktionen {
     background-color: transparent;
     font-size: 36px;
     text-align: right;
-    margin-right: 50px;
 }
 
 input[type="color"] {
     opacity: 0;
 }
 
-.aktions-wert.ROLL, .aktions-wert.ROTATE, .aktions-wert.SET_RGB {
-    display: none;
-}
+/*.aktions-wert.ROLL, .aktions-wert.ROTATE, .aktions-wert.SET_RGB {*/
+    /*display: none;*/
+/*}*/
 
 .aktions-wert.ROLL input {
     background-color: var(--roll-color-darker);
@@ -243,8 +250,6 @@ input[type="color"] {
 .aktions-einheit {
     color: var(--dark);
     font-size: 18px;
-    min-width: 150px;
-    margin-right: 50px;
 }
 
 .rundenplanung-abschicken {
