@@ -150,6 +150,7 @@ ul.verfuegbare-aktionen {
 }
 
 .stoppuhr {
+    opacity: 0;
     margin: -50px 0 50px 0;
     font-size: 144px;
     font-weight: normal;
