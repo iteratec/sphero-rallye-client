@@ -61,7 +61,12 @@
                     <!--  <input type="number">                           -->
                     <!--  <p class="aktions-einheit">Grad</p>             -->
                     <!-- -->
-                    <!--  <input type="color">                            -->
+                    <!--  <input class="rot" type="number">               -->
+                    <!--  <p class="aktions-einheit">Rot</p>              -->
+                    <!--  <input class="gruen" type="number">             -->
+                    <!--  <p class="aktions-einheit">Grün</p>             -->
+                    <!--  <input class="blau" type="number">              -->
+                    <!--  <p class="aktions-einheit">Blau</p>             -->
                 </div>
             </div>
             <div class="aktion" id="zwei">
@@ -132,6 +137,7 @@
     element.addEventListener("change", aktionUebernehmen);
     element.addEventListener("change", validateActionTypeSelection);
     element.addEventListener("change", modifyAvailableActionTypes);
+    element.addEventListener("change", registerColorizeHandler);
   });
 
   document.querySelector("#spieler")
