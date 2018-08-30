@@ -19,6 +19,7 @@ function aktionUebernehmen() {
     const geschwindigkeit = document.createElement("input");
     geschwindigkeit.type = "number";
     geschwindigkeit.value = "0";
+    geschwindigkeit.classList.add("geschwindigkeit");
 
     const geschwindigkeitBeschreibung = document.createElement("p");
     geschwindigkeitBeschreibung.classList.add("aktions-einheit");
@@ -27,6 +28,7 @@ function aktionUebernehmen() {
     const dauer = document.createElement("input");
     dauer.type = "number";
     dauer.value = "0";
+    dauer.classList.add("dauer");
 
     const dauerBeschreibung = document.createElement("p");
     dauerBeschreibung.classList.add("aktions-einheit");
@@ -42,6 +44,7 @@ function aktionUebernehmen() {
     const grad = document.createElement("input");
     grad.type = "number";
     grad.value = "0";
+    grad.classList.add("grad");
 
     const gradBeschreibung = document.createElement("p");
     gradBeschreibung.classList.add("aktions-einheit");
@@ -52,15 +55,21 @@ function aktionUebernehmen() {
     aktionsWert.appendChild(grad);
     aktionsWert.appendChild(gradBeschreibung);
   } else if (aktionstyp === "SET_RGB") {
-    const farben = ["Rot", "Grün", "Blau"];
-    farben.forEach(function (farbe) {
+    const farben = {
+      "rot": "Rot",
+      "gruen": "Grün",
+      "blau": "Blau"
+    };
+
+    Object.keys(farben).forEach(function (farbe) {
       const eingabe = document.createElement("input");
       eingabe.type = "number";
       eingabe.value = "0";
+      eingabe.classList.add(farbe);
 
       const beschreibung = document.createElement("p");
       beschreibung.classList.add("aktions-einheit");
-      beschreibung.innerHTML = farbe;
+      beschreibung.innerHTML = farben[farbe];
 
       aktionsWert.appendChild(eingabe);
       aktionsWert.appendChild(beschreibung);
@@ -101,19 +110,26 @@ function geplanteAktionenAbschicken() {
       return;
     }
 
-    const aktionsWert = aktion.querySelector(`.aktions-wert.${aktionsTyp} > input`).value;
-
     let parameter = {};
 
     if (aktionsTyp === "ROLL") {
-      parameter["speed"] = parseInt(aktionsWert);
-      parameter["durationInSecs"] = 3;
+      const geschwindigkeit = aktion.querySelector(".geschwindigkeit").value;
+      const dauer = aktion.querySelector(".dauer").value;
+
+      parameter["speed"] = parseInt(geschwindigkeit);
+      parameter["durationInSecs"] = parseInt(dauer);
     } else if (aktionsTyp === "ROTATE") {
-      parameter["heading"] = parseInt(aktionsWert);
+      const grad = aktion.querySelector(".grad").value;
+
+      parameter["heading"] = parseInt(grad);
     } else if (aktionsTyp === "SET_RGB") {
-      parameter["red"] = getRed(aktionsWert);
-      parameter["green"] = getGreen(aktionsWert);
-      parameter["blue"] = getBlue(aktionsWert);
+      const rot = aktion.querySelector(".rot").value;
+      const gruen = aktion.querySelector(".gruen").value;
+      const blau = aktion.querySelector(".blau").value;
+
+      parameter["red"] = parseInt(rot);
+      parameter["green"] = parseInt(gruen);
+      parameter["blue"] = parseInt(blau);
     }
 
     geplanteAktionen.push({
