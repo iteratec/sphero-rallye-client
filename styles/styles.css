@@ -218,10 +218,14 @@ ul.verfuegbare-aktionen {
 }
 
 .aktions-wert * {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
-.aktions-wert.SET_RGB, .aktions-wert input {
+.aktions-wert p:last-child {
+    min-width: 50px;
+}
+
+.aktions-wert input {
     height: 50px;
     width: 100px;
     border: 1px transparent solid;
@@ -231,20 +235,16 @@ ul.verfuegbare-aktionen {
     text-align: right;
 }
 
-input[type="color"] {
-    opacity: 0;
-}
-
-/*.aktions-wert.ROLL, .aktions-wert.ROTATE, .aktions-wert.SET_RGB {*/
-    /*display: none;*/
-/*}*/
-
 .aktions-wert.ROLL input {
     background-color: var(--roll-color-darker);
 }
 
 .aktions-wert.ROTATE input {
     background-color: var(--rotate-color-darker);
+}
+
+.aktions-wert.SET_RGB input {
+    background-color: var(--set-rgb-color-darker);
 }
 
 .aktions-einheit {

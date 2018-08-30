@@ -32,11 +32,12 @@ function aktionUebernehmen() {
     dauerBeschreibung.classList.add("aktions-einheit");
     dauerBeschreibung.innerHTML = "Dauer";
 
+    aktion.classList.add("ROLL");
+    aktionsWert.classList.add("ROLL");
     aktionsWert.appendChild(geschwindigkeit);
     aktionsWert.appendChild(geschwindigkeitBeschreibung);
     aktionsWert.appendChild(dauer);
     aktionsWert.appendChild(dauerBeschreibung);
-    aktion.classList.add("ROLL");
   } else if (aktionstyp === "ROTATE") {
     const grad = document.createElement("input");
     grad.type = "number";
@@ -46,20 +47,27 @@ function aktionUebernehmen() {
     gradBeschreibung.classList.add("aktions-einheit");
     gradBeschreibung.innerHTML = "Grad";
 
+    aktion.classList.add("ROTATE");
+    aktionsWert.classList.add("ROTATE");
     aktionsWert.appendChild(grad);
     aktionsWert.appendChild(gradBeschreibung);
-    aktion.classList.add("ROTATE");
   } else if (aktionstyp === "SET_RGB") {
-    const farbe = document.createElement("input");
-    farbe.type = "color";
-    farbe.value = "#4CB944";
+    const farben = ["Rot", "Grün", "Blau"];
+    farben.forEach(function (farbe) {
+      const eingabe = document.createElement("input");
+      eingabe.type = "number";
+      eingabe.value = "0";
 
-    const farbeBeschreibung = document.createElement("p");
-    farbeBeschreibung.classList.add("aktions-einheit");
+      const beschreibung = document.createElement("p");
+      beschreibung.classList.add("aktions-einheit");
+      beschreibung.innerHTML = farbe;
 
-    aktionsWert.appendChild(farbe);
-    aktionsWert.appendChild(farbeBeschreibung);
+      aktionsWert.appendChild(eingabe);
+      aktionsWert.appendChild(beschreibung);
+    });
+
     aktion.classList.add("SET_RGB");
+    aktionsWert.classList.add("SET_RGB");
   }
 }
 
@@ -68,6 +76,7 @@ function aktionZuruecksetzen(aktion) {
 
   Object.keys(ICONS).forEach(function (key) {
     aktion.classList.remove(key);
+    aktion.querySelector(".aktions-wert").classList.remove(key);
     icon.classList.remove(ICONS[key]);
   });
   icon.classList.add("fa-puzzle-piece");
