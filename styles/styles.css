@@ -215,6 +215,7 @@ ul.verfuegbare-aktionen {
 
 .aktions-wert {
     display: flex;
+    align-items: center;
 }
 
 .aktions-wert * {
@@ -250,6 +251,31 @@ ul.verfuegbare-aktionen {
 .aktions-einheit {
     color: var(--dark);
     font-size: 18px;
+}
+
+@media (max-width: 1800px) {
+    .aktion i {
+        margin: 0 20px;
+        font-size: 30px;
+    }
+
+    .aktions-auswahl {
+        font-size: 15px;
+    }
+
+    .aktions-wert * {
+        margin-right: 10px;
+    }
+
+    .aktions-wert input {
+        height: 40px;
+        width: 90px;
+        font-size: 30px;
+    }
+
+    .aktions-einheit {
+        font-size: 15px;
+    }
 }
 
 .rundenplanung-abschicken {
