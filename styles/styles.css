@@ -21,18 +21,18 @@ body {
     --set-rgb-color-darker: #9C9E9D;
 }
 
-h1 {
-    font-size: 36px;
-    color: var(--blue);
-    margin: 50px 0;
-}
-
 .kopfzeile {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     background-color: var(--blue);
+}
+
+h1 {
+    font-size: 36px;
+    color: var(--blue);
+    margin: 50px 0;
 }
 
 #logo {
@@ -57,6 +57,25 @@ h1 {
     margin-right: 70px;
 }
 
+@media (max-height: 900px) {
+    .kopfzeile {
+        height: 50px;
+    }
+
+    .kopfzeile p {
+        font-size: 20px;
+    }
+
+    #robo-icon {
+        height: 30px;
+    }
+
+    h1 {
+        font-size: 25px;
+        margin: 25px;
+    }
+}
+
 .spielbereich {
     display: flex;
 }
@@ -66,6 +85,12 @@ h1 {
     flex-direction: column;
     height: calc(100vh - 70px);
     width: 50vw;
+}
+
+@media (max-height: 900px) {
+    .teilbereich {
+        height: calc(100vh - 50px);
+    }
 }
 
 /* Linke Seite */
@@ -143,16 +168,31 @@ ul.verfuegbare-aktionen {
     margin: 25px 0;
 }
 
+@media (max-height: 900px) {
+    .verfuegbare-aktion i {
+        font-size: 40px;
+        margin: 25px 0 15px 0;
+    }
+
+    .verfuegbare-aktion div {
+        font-size: 20px;
+        margin: 20px 0;
+    }
+}
+
 /* Rechte Seite */
 
 .rundenstart-anzeige {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .stoppuhr {
-    opacity: 0;
-    margin: -50px 0 50px 0;
-    font-size: 144px;
+    opacity: 100;
+    margin: 0 0 25px 0;
+    font-size: 4em;
     font-weight: normal;
 }
 
@@ -169,7 +209,6 @@ ul.verfuegbare-aktionen {
     align-items: center;
     border: 1px var(--dark) solid;
     border-radius: 10px 50px 50px 10px;
-    min-height: 95px;
 }
 
 .aktion.ROLL {
@@ -228,8 +267,6 @@ ul.verfuegbare-aktionen {
 }
 
 .aktions-wert input {
-    height: 50px;
-    width: 100px;
     border: 1px transparent solid;
     border-radius: 50px;
     background-color: transparent;
@@ -254,7 +291,7 @@ ul.verfuegbare-aktionen {
     font-size: 18px;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1800px), (max-height: 900px) {
     .aktion i {
         margin: 0 20px;
         font-size: 30px;
@@ -269,9 +306,7 @@ ul.verfuegbare-aktionen {
     }
 
     .aktions-wert input {
-        height: 40px;
-        width: 90px;
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .aktions-einheit {
