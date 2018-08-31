@@ -268,10 +268,11 @@ ul.verfuegbare-aktionen {
 
 .aktions-wert input {
     border: 1px transparent solid;
-    border-radius: 50px;
+    border-radius: 30px;
     background-color: transparent;
     font-size: 36px;
     text-align: right;
+    max-width: 2.5em;
 }
 
 .aktions-wert.ROLL input {
