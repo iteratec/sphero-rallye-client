@@ -15,13 +15,10 @@ function stoppuhrStarten(rundenende) {
   const ende = Date.parse(rundenende.toString());
 
   stoppuhr = setInterval(function () {
-    const verbleibendeSekunden = Math.round((ende - Date.now()) / 1000);
-    stoppuhrAnzeigen(verbleibendeSekunden);
 
-    if (verbleibendeSekunden < 0) {
-      clearInterval(stoppuhr);
-      stoppuhrAnzeigen(0);
-    }
+
+    // HIER KÖNNT IHR EUREN CODE SCHREIBEN
+
   }, 1000);
 }
 
@@ -42,6 +39,7 @@ function stoppuhrStarten(rundenende) {
 
 
 function stoppuhrAnzeigen(sekunden) {
-  const stoppuhrAnker = document.querySelector("#stoppuhr-wert");
-  stoppuhrAnker.innerHTML = sekunden;
+
+  // HIER KÖNNT IHR EUREN CODE SCHREIBEN
+
 }
