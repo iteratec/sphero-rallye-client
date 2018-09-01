@@ -100,36 +100,87 @@ function alleAktionenZuruecksetzen() {
   });
 }
 
+
+
+
+// So muss die Nachricht aussehen die ihr zum Spiel schicken könnt:
+
+// [
+//   {
+//     "ActionType": "ROLL",
+//     "Config": {
+//       "speed": 10,
+//       "durationInSecs": 3
+//     }
+//   },
+//   {
+//     "ActionType": "ROTATE",
+//     "Config": {
+//       "heading": 180
+//     }
+//   },
+//   {
+//     "ActionType": "SET_RGB",
+//     "Config": {
+//       "red": 100,
+//       "green": 255,
+//       "blue": 50
+//     }
+//   }
+// ]
+
+// Beschreibung:
+//
+// var geschwindigkeit = wertVon(aktion, "geschwindigkeit");
+//
+// parameter["speed"] = geschwindigkeit;
+//
+// nachrichtSchicken(thema, nachricht);
+
+
 function geplanteAktionenAbschicken() {
-  let geplanteAktionen = [];
+  var geplanteAktionen = [];
 
-  document.querySelectorAll(".aktion").forEach(function (aktion) {
-    const aktionsTyp = aktion.querySelector(".aktions-auswahl").value;
+  alleElementeMitKlasse("aktion").forEach(function (aktion) {
+    var aktionsTyp = aktion.querySelector(".aktions-auswahl").value;
 
-    if (!aktionsTyp) {
-      return;
-    }
+    var parameter = {};
 
-    let parameter = {};
+    if (aktionsTyp === "ROLL") {  // ROLLEN
 
-    if (aktionsTyp === "ROLL") {
-      const geschwindigkeit = aktion.querySelector(".geschwindigkeit").value;
-      const dauer = aktion.querySelector(".dauer").value;
+      // <input class="geschwindigkeit" type="number">
+      // <input class="dauer" type="number">
 
-      parameter["speed"] = parseInt(geschwindigkeit);
-      parameter["durationInSecs"] = parseInt(dauer);
-    } else if (aktionsTyp === "ROTATE") {
-      const grad = aktion.querySelector(".grad").value;
+      // HIER KÖNNT IHR EUREN CODE SCHREIBEN
 
-      parameter["heading"] = parseInt(grad);
-    } else if (aktionsTyp === "SET_RGB") {
-      const rot = aktion.querySelector(".rot").value;
-      const gruen = aktion.querySelector(".gruen").value;
-      const blau = aktion.querySelector(".blau").value;
 
-      parameter["red"] = parseInt(rot);
-      parameter["green"] = parseInt(gruen);
-      parameter["blue"] = parseInt(blau);
+
+
+
+    } else if (aktionsTyp === "ROTATE") {  // DREHEN
+
+      // <input class="grad" type="number">
+
+      // HIER KÖNNT IHR EUREN CODE SCHREIBEN
+
+
+
+
+
+
+    } else if (aktionsTyp === "SET_RGB") {  // FARBE SETZEN
+
+      // <input class="rot" type="number">
+      // <input class="gruen" type="number">
+      // <input class="blau" type="number">
+
+      // HIER KÖNNT IHR EUREN CODE SCHREIBEN
+
+
+
+
+
+
     }
 
     geplanteAktionen.push({
@@ -139,17 +190,21 @@ function geplanteAktionenAbschicken() {
 
   });
 
+
   if (client === null) {
-    alert("Es muss ein Spieler ausgewählt sein.");
+    console.log("Es muss ein Spieler ausgewählt sein.");
     return;
   }
 
   if (geplanteAktionen.length < 5) {
-    alert("Es müssen alle 5 Aktionen ausgefüllt sein.");
+    console.log("Es müssen alle 5 Aktionen ausgefüllt sein.");
     return;
   }
 
-  nachrichtSchicken(`spheroRallye/${spieler.toString()}/plannedActions`, geplanteAktionen);
+
+  // HIER KÖNNT IHR DIE NACHRICHT ZUM SPIEL SCHICKEN:
+
+
 }
 
 function nachrichtSchicken(thema, nachricht) {
